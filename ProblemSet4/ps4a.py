@@ -73,24 +73,19 @@ def getWordScore(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    word = 'ab'
-    summ = 0
-    mul = 0
+    add = 0
     x = 0
-    if word == "":
-        wordscore = 0
-        return 0
+    mul = 0
+    wordscore = 0
+    for i in word:
+        x = SCRABBLE_LETTER_VALUES.get(i)
+        add += x
+    mul = len(word) * add
+    if n == len(word):
+        wordscore = mul + 50
     else:
-        for i in word:
-            x = SCRABBLE_LETTER_VALUES.get(i)
-            summ += x
-        mul = summ * len(word)
-        if len(word) == n:
-            wordscore = summ + 50 * mul
-        else:
-            wordscore = summ * mul
-        return wordscore
+        wordscore = mul
+    return wordscore
 
 #
 # Problem #2: Make sure you understand how this function works and what it does!
