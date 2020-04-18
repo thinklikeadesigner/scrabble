@@ -162,17 +162,35 @@ def isValidWord(word, hand, wordList):
     """
     Returns True if word is in the wordList and is entirely
     composed of letters in the hand. Otherwise, returns False.
+
     Does not mutate hand or wordList.
+
     word: string
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    if word not in wordList:
+        return False
+    else:
+        for letter in word:
+            if letter not in hand:
+                return False
+            else:
+                newHand = hand.copy()
+                for letter in word:
+                    if letter not in newHand:
+                        return False
+                    else:
+                        newHand[letter] = newHand[letter] - 1
+                        if newHand[letter] < 0:
+                            return False
+    return True
 
 
 #
 # Problem #4: Playing a hand
 #
+
 
 def calculateHandlen(hand):
     """ 
