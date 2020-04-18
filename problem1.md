@@ -22,3 +22,18 @@ get (4+1+1+2)*4 = 32). Be sure to check that the hand actually has 1 'w', 2 'e's
 * **Testing**: If this function is implemented properly, and you run ```test_ps4a.py```, you should see that the ```test_getWordScore()``` tests pass. Also test your implementation of ```getWordScore```, using some reasonable English words.
 
 Fill in the code for ```getWordScore``` in ```ps4a.py``` and be sure you've passed the appropriate tests in ```test_ps4a.py``` before pasting your function definition here.
+
+```
+def getWordScore(word, n):
+    """
+    Returns the score for a word. Assumes the word is a valid word.
+    The score for a word is the sum of the points for letters in the
+    word, multiplied by the length of the word, PLUS 50 points if all n
+    letters are used on the first turn.
+    Letters are scored as in Scrabble; A is worth 1, B is worth 3, C is
+    worth 3, D is worth 2, E is worth 1, and so on (see SCRABBLE_LETTER_VALUES)
+    word: string (lowercase letters)
+    n: integer (HAND_SIZE; i.e., hand size required for additional points)
+    returns: int >= 0
+    """
+   ```
