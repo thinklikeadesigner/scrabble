@@ -6,6 +6,7 @@ import string
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
 HAND_SIZE = 7
+n = HAND_SIZE
 
 SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
@@ -266,7 +267,7 @@ def playHand(hand, wordList, n):
             #
 
 
-def playGame(wordList):
+def playGame(wordList, n):
     """
     Allow the user to play an arbitrary number of hands.
     1) Asks the user to input 'n' or 'r' or 'e'.
@@ -274,11 +275,42 @@ def playGame(wordList):
       * If the user inputs 'r', let the user play the last hand again.
       * If the user inputs 'e', exit the game.
       * If the user inputs anything else, tell them their input was invalid.
-    2) When done playing the hand, repeat from step 1    
+    2) When done playing the hand, repeat from step 1
     """
     # TO DO ... <-- Remove this comment when you code this function
-    # <-- Remove this line when you code the function
-    print("playGame not yet implemented.")
+    n = HAND_SIZE
+    played = False
+    gameOver = False
+    while played == False:
+        choice = input(
+            "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if choice == 'e':
+            return
+        elif choice == 'r':
+            print("You have not played a hand yet. Please play a new hand first!")
+            print()
+        elif choice == 'n':
+            hand = dealHand(n)
+            playHand(hand, wordList, n)
+            print()
+            break
+        else:
+            print("Invalid command.")
+    while gameOver == False:
+        choice = input(
+            "Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if choice == 'e':
+            return
+        elif choice == 'r':
+            playHand(hand, wordList, n)
+            print()
+        elif choice == 'n':
+            hand = dealHand(n)
+            playHand(hand, wordList, n)
+            print()
+            played == True
+        else:
+            print("Invalid command.")
 
 
 wordList = loadWords()
@@ -287,3 +319,4 @@ wordList = loadWords()
 # if __name__ == '__main__':
 #     wordList = loadWords()
 #     playGame(wordList)
+playHand(wordList, n)
